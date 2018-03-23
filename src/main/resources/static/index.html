@@ -21,6 +21,10 @@
     });
 });
 </script>
+
+<script type="text/javascript">
+</script>
+
 <!--SIGN UP-->
 <h1>表情包推荐应用后台登录</h1>
 <div class="login-form">
@@ -36,20 +40,20 @@
     </div>
     <form>
         <div class="adm">
-        <input placeholder="Username" type="text" class="text" >
+        <input id="username" placeholder="Username" type="text" class="text" >
             <!--value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}"-->
         </div>
         <div class="key">
-            <input placeholder="Password" type="password" >
+            <input id="password" placeholder="Password" type="password" >
             <!--value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"-->
         </div>
     </form>
     <div class="signin">
-        <a href="admin-index.html" > <input type="submit" value="Login" ></a>
+         <input class="admin-login" type="submit" value="Login" onclick="Location()">
 
     </div>
 </div>
-
+<script src="assets/js/index.js"></script>
 
 </body>
 </html>
