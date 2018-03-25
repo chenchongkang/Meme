@@ -9,10 +9,10 @@ public class Entityuser {
     @Id
     @GeneratedValue
     private Integer userID;
-    private String userName;
+        private String username;
     private String password;
     private String address;
-    private String phoneNumber;
+    private String phonenumber;
     private String avatar;
     private String qq;
     private String introduction;
@@ -29,11 +29,11 @@ public class Entityuser {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getPassword() {
@@ -53,11 +53,11 @@ public class Entityuser {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phonenumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phonenumber = phoneNumber;
     }
 
     public String getAvatar() {
