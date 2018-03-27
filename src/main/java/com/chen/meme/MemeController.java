@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MemeController {
-@RequestMapping(value = "/hello",method = RequestMethod.GET)
+@RequestMapping(value = "/memetest",method = RequestMethod.GET)
     public String say(){
 
     return "Hello Meme";
