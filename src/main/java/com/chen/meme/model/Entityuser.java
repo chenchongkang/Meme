@@ -9,7 +9,7 @@ public class Entityuser {
     @Id
     @GeneratedValue
     private Integer userID;
-        private String username;
+    private String username;
     private String password;
     private String address;
     private String phonenumber;

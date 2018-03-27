@@ -20,7 +20,7 @@ public class UseradminController {
      */
     @Autowired
     private EntityuserRepository entityuserRepository;
-    @RequestMapping(value = "/data", method = RequestMethod.GET)
+    @RequestMapping(value = "/data", method = RequestMethod.POST)
     @ResponseBody
     public List<Entityuser> data() {
         System.out.println("yes");
