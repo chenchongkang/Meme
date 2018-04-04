@@ -3,6 +3,7 @@ package com.chen.meme.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.sql.Date;
 import java.sql.Time;
 
 @Entity
@@ -13,8 +14,16 @@ public class Entitymeme {
     private String memeName;
     private Integer downloads;
     private String memeIntro;
-    private Time upTime;
+    private Date upTime;
     private String classis;//classes 貌似会出错
+
+    public Date getUpTime() {
+        return upTime;
+    }
+
+    public void setUpTime(Date upTime) {
+        this.upTime = upTime;
+    }
 
     public String getClassis() {
         return classis;
@@ -34,14 +43,6 @@ public class Entitymeme {
 
     public void setMemeIntro(String memeIntro) {
         this.memeIntro = memeIntro;
-    }
-
-    public Time getUpTime() {
-        return upTime;
-    }
-
-    public void setUpTime(Time upTime) {
-        this.upTime = upTime;
     }
 
 

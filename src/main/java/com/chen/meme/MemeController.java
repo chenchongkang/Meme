@@ -31,9 +31,9 @@ public class MemeController {
      * @param classis
      * @return
      */
-    @PostMapping(value = "/adduser")
+    @PostMapping(value = "/addmeme")
     public Entitymeme UserAdd(@RequestParam("memeName")String memeName, @RequestParam("downloads")Integer downloads,
-                              @RequestParam("memeIntro") String memeIntro, @RequestParam("upTime")Time upTime,
+                              @RequestParam("memeIntro") String memeIntro, @RequestParam("upTime") java.sql.Date upTime,
                               @RequestParam("classis") String classis){
         System.out.println("yes2");
         Entitymeme entitymeme=new Entitymeme();
@@ -41,26 +41,22 @@ public class MemeController {
         entitymeme.setDownloads(downloads);
         entitymeme.setUpTime(upTime);
         entitymeme.setMemeIntro(memeIntro);
+        entitymeme.setClassis(classis);
 
 
         return entitymemeRepository.save(entitymeme);
 
     }
-    //根据ID查询一个用户
+    //根据ID查询表情包
     @GetMapping(value = "/entitymeme/{memeID}")
     public  Entitymeme userFindOne(@PathVariable("memeID") Integer memeid){
         return entitymemeRepository.findOne(memeid);
     }
 
-    //    //根据用户昵称查询用户
-//    @GetMapping(value = "/entityuser/{username}")
-//    public  List<Entityuser> userListByName(@PathVariable("username") String username){
-//        return entityuserRepository.findByUserName(username);
-//    }
-    //更新用户
+    //更新表情包
     @PutMapping(value = "/entitymeme/{memeID}")
     public Entitymeme UserUpdata(@RequestParam("memeName")String memeName, @RequestParam("downloads")Integer downloads,
-                              @RequestParam("memeIntro") String memeIntro, @RequestParam("upTime")Time upTime,
+                              @RequestParam("memeIntro") String memeIntro, @RequestParam("upTime") java.sql.Date upTime,
                               @RequestParam("classis") String classis){
         System.out.println("yes2");
         Entitymeme entitymeme=new Entitymeme();
@@ -68,6 +64,7 @@ public class MemeController {
         entitymeme.setDownloads(downloads);
         entitymeme.setUpTime(upTime);
         entitymeme.setMemeIntro(memeIntro);
+        entitymeme.setClassis(classis);
 
 
         return entitymemeRepository.save(entitymeme);
