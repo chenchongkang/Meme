@@ -33,18 +33,8 @@ public class UserController {
      * @return
      */
     @PostMapping(value = "/entityuser")
-    public Entityuser UserAdd(@RequestParam("username") String username, @RequestParam("password")String password,
-                              @RequestParam("address") String address, @RequestParam("phonenumber")String phonenumber,
-                              @RequestParam("avatar") String avatar, @RequestParam("qq")String qq,
-                              @RequestParam("introduction") String introduction){
-        Entityuser entityuser=new Entityuser();
-        entityuser.setUserName(username);
-        entityuser.setPassword(password);
-        entityuser.setAddress(address);
-        entityuser.setPhoneNumber(phonenumber);
-        entityuser.setAvatar(avatar);
-        entityuser.setQq(qq);
-        entityuser.setIntroduction(introduction);
+    public Entityuser UserAdd(@RequestBody(required =false) Entityuser entityuser){
+        Entityuser s=entityuser;
         return entityuserRepository.save(entityuser);
 
     }
@@ -61,16 +51,16 @@ public class UserController {
 //    }
     //更新用户
     @PutMapping(value = "/entityuser/{uesrID}")
-    public Entityuser userUpdate(@RequestParam("username") String username, @RequestParam("password")String password,
+    public Entityuser userUpdate(@RequestParam("username") String username, @RequestParam("password") String password,
                            @RequestParam("address") String address, @RequestParam("phonenumber")String phonenumber,
                            @RequestParam("avatar") String avatar, @RequestParam("qq")String qq,
                            @RequestParam("introduction") String introduction){
 
         Entityuser entityuser=new Entityuser();
-        entityuser.setUserName(username);
+        entityuser.setUsername(username);
         entityuser.setPassword(password);
         entityuser.setAddress(address);
-        entityuser.setPhoneNumber(phonenumber);
+        entityuser.setPhonenumber(phonenumber);
         entityuser.setAvatar(avatar);
         entityuser.setQq(qq);
         entityuser.setIntroduction(introduction);

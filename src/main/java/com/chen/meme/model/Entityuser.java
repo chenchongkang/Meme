@@ -28,12 +28,11 @@ public class Entityuser {
         this.userID = userID;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
-
-    public void setUserName(String userName) {
-        this.username = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -52,12 +51,12 @@ public class Entityuser {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phonenumber = phoneNumber;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     public String getAvatar() {
@@ -83,4 +82,6 @@ public class Entityuser {
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
     }
+
+
 }

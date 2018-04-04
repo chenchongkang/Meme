@@ -3,10 +3,7 @@ package com.chen.meme;
 import com.chen.meme.model.Entityuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +22,35 @@ public class UseradminController {
     public List<Entityuser> data() {
         System.out.println("yes");
         return entityuserRepository.findAll();
+    }
+
+    /**
+     * 添加一个用户
+     * @param username
+     * @param password
+     * @param address
+     * @param phonenumber
+     * @param avatar
+     * @param qq
+     * @param introduction
+     * @return
+     */
+    @PostMapping(value = "/adduser")
+    public Entityuser UserAdd(@RequestParam("username")String username, @RequestParam("password")String password,
+                              @RequestParam("address") String address, @RequestParam("phonenumber")String phonenumber,
+                              @RequestParam("avatar") String avatar, @RequestParam("qq")String qq,
+                              @RequestParam("introduction") String introduction){
+        System.out.println("yes1");
+        Entityuser entityuser=new Entityuser();
+        entityuser.setUsername(username);
+        entityuser.setPassword(password);
+        entityuser.setAddress(address);
+        entityuser.setPhonenumber(phonenumber);
+        entityuser.setAvatar(avatar);
+        entityuser.setQq(qq);
+        entityuser.setIntroduction(introduction);
+        return entityuserRepository.save(entityuser);
+
     }
 //    @RequestMapping(value = "/useradd", method = RequestMethod.GET)
 //    public String index(ModelMap modelMap) {
