@@ -37,7 +37,7 @@ public class MemeController {
     public Entitymeme UserAdd(@RequestParam("memeName")String memeName, @RequestParam("downloads")Integer downloads,
                               @RequestParam("memeIntro") String memeIntro, @RequestParam("upTime") java.sql.Date upTime,
                               @RequestParam("classis") String classis,@RequestParam("author")String author,
-                              @RequestParam("src") String src){
+                              @RequestParam("src") String src,@RequestParam("cover") String cover){
         System.out.println("yes2");
         Entitymeme entitymeme=new Entitymeme();
         entitymeme.setMemeName(memeName);
@@ -47,6 +47,7 @@ public class MemeController {
         entitymeme.setClassis(classis);
         entitymeme.setAuthor(author);
         entitymeme.setSrc(src);
+        entitymeme.setCover(cover);
 
 
         return entitymemeRepository.save(entitymeme);
@@ -62,7 +63,7 @@ public class MemeController {
     @PutMapping(value = "/entitymeme/{memeID}")
     public Entitymeme UserUpdata(@RequestParam("memeName")String memeName, @RequestParam("downloads")Integer downloads,
                               @RequestParam("memeIntro") String memeIntro, @RequestParam("upTime") java.sql.Date upTime,
-                              @RequestParam("classis") String classis,@RequestParam("author")String author){
+                              @RequestParam("classis") String classis,@RequestParam("author")String author,@RequestParam("cover") String cover){
         System.out.println("yes2");
         Entitymeme entitymeme=new Entitymeme();
         entitymeme.setMemeName(memeName);
@@ -71,6 +72,7 @@ public class MemeController {
         entitymeme.setMemeIntro(memeIntro);
         entitymeme.setClassis(classis);
         entitymeme.setAuthor(author);
+        entitymeme.setCover(cover);
 
 
         return entitymemeRepository.save(entitymeme);

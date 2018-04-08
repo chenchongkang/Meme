@@ -145,7 +145,7 @@
                     <div class="am-form-group">
                         <label for="meme_name" class="am-u-sm-3 am-form-label">类别 / Classes</label>
                     <div class="am-u-sm-9">
-                        <select>
+                        <select id="meme_classes">
                             <option value="option1">所有类别</option>
                             <option value="option2">最新</option>
                             <option value="option3">最热</option>
@@ -158,7 +158,7 @@
                     <div class="am-form-group">
                         <label for="meme_name" class="am-u-sm-3 am-form-label">作者 / Author</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="meme-author" placeholder="作者 / Author">
+                            <input type="text" id="meme_author" placeholder="作者 / Author">
                             <small>请给出表情包的来源。</small>
                         </div>
                     </div>
@@ -168,15 +168,15 @@
                     <div class="am-form-group">
                         <label for="meme_name" class="am-u-sm-3 am-form-label">表情包图片路径 / src</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="" placeholder="表情包图片路径 / src">
+                            <input type="text" id="meme_src" placeholder="表情包图片路径 / src">
                             <small>添加表情包图片路径。</small>
                         </div>
                     </div>
 
                     <div class="am-form-group">
-                        <label for="meme-intro" class="am-u-sm-3 am-form-label">表情包描述 / Intro</label>
+                        <label for="meme_intro" class="am-u-sm-3 am-form-label">表情包描述 / Intro</label>
                         <div class="am-u-sm-9">
-                            <textarea class="" rows="5" id="meme-intro" placeholder="输入表情包简介"></textarea>
+                            <textarea class="" rows="5" id="meme_intro" placeholder="输入表情包简介"></textarea>
                             <small>250字以内写出表情包的特点...</small>
                         </div>
                     </div>
@@ -208,6 +208,7 @@
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/meme.add.js"></script>

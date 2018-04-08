@@ -18,6 +18,15 @@ public class Entitymeme {
     private Date upTime;
     private String classis;//classes 貌似会出错
     private String author;
+    private String cover;
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
     public String getSrc() {
         return src;
