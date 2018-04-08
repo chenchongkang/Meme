@@ -1,12 +1,11 @@
-
-function adduserTypeToBox(data,length)
+    function adduserTypeToBox(data,length)
 {
     var boxHTML = "";
     var jiluHTML= "";
     for(var i = 0;i<length;i++)
     {
         var a=i+1;
-        boxHTML+='<tr ><td><input type="checkbox" id=""comicTypeGroup_'+i+'" /></td><td>'+a+'</td><td><a href="#">'+data[i].username+'</a></td>' +
+        boxHTML+='<tr ><td><input type="checkbox" id=""comicTypeGroup_'+i+'" /></td><td>'+a+'</td><td><a href="#">'+data[i].userName+'</a></td>' +
             '<td>'+data[i].address+'</td>' +
             '<td>'+data[i].phonenumber+'</td><td>'+data[i].qq+'</td><td><div class="am-btn-toolbar"><div class="am-btn-group am-btn-group-xs">' +
             '<button class="am-btn am-btn-default am-btn-xs am-text-secondary">' +

@@ -1,4 +1,6 @@
 package com.chen.meme.model;
+import org.hibernate.validator.constraints.URL;
+
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,13 +11,21 @@ public class Entityuser {
     @Id
     @GeneratedValue
     private Integer userID;
-    private String username;
+    private String userName;
     private String password;
     private String address;
     private String phonenumber;
     private String avatar;
     private String qq;
     private String introduction;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public Entityuser() {
     }
@@ -28,12 +38,7 @@ public class Entityuser {
         this.userID = userID;
     }
 
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
+
 
     public String getPassword() {
         return password;

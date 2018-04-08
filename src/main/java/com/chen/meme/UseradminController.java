@@ -26,7 +26,7 @@ public class UseradminController {
 
     /**
      * 添加一个用户
-     * @param username
+     * @param userName
      * @param password
      * @param address
      * @param phonenumber
@@ -36,13 +36,13 @@ public class UseradminController {
      * @return
      */
     @PostMapping(value = "/adduser")
-    public Entityuser UserAdd(@RequestParam("username")String username, @RequestParam("password")String password,
+    public Entityuser UserAdd(@RequestParam("username")String userName, @RequestParam("password")String password,
                               @RequestParam("address") String address, @RequestParam("phonenumber")String phonenumber,
                               @RequestParam("avatar") String avatar, @RequestParam("qq")String qq,
                               @RequestParam("introduction") String introduction){
         System.out.println("yes1");
         Entityuser entityuser=new Entityuser();
-        entityuser.setUsername(username);
+        entityuser.setUserName(userName);
         entityuser.setPassword(password);
         entityuser.setAddress(address);
         entityuser.setPhonenumber(phonenumber);

@@ -10,12 +10,30 @@ import java.sql.Time;
 public class Entitymeme {
     @Id
     @GeneratedValue
+    private String src;
     private Integer memeID;
     private String memeName;
     private Integer downloads;
     private String memeIntro;
     private Date upTime;
     private String classis;//classes 貌似会出错
+    private String author;
+
+    public String getSrc() {
+        return src;
+    }
+
+    public void setSrc(String src) {
+        this.src = src;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     public Date getUpTime() {
         return upTime;

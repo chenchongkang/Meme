@@ -4,6 +4,8 @@ import com.chen.meme.model.Entityuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 @RestController
@@ -11,7 +13,6 @@ public class UserController {
 
     @Autowired
     private EntityuserRepository entityuserRepository;
-
     /**
      * 查询用户列表
      * @return
@@ -23,18 +24,14 @@ public class UserController {
 
     /**
      * 添加一个用户
-     * @param username
-     * @param password
-     * @param address
-     * @param phonenumber
-     * @param avatar
-     * @param qq
-     * @param introduction
      * @return
      */
     @PostMapping(value = "/entityuser")
-    public Entityuser UserAdd(@RequestBody(required =false) Entityuser entityuser){
+    public Entityuser UserAdd(@RequestBody(required =false) Entityuser entityuser) {
         Entityuser s=entityuser;
+//        s = new String(s.getUsername("iso-8859-1"),"gbk");
+//        URLDecoder.decode(String.valueOf(entityuser),"UTF-8");
+        System.out.println(entityuser.getUserName()+" yoooooooooooooooooooo");
         return entityuserRepository.save(entityuser);
 
     }
@@ -51,13 +48,13 @@ public class UserController {
 //    }
     //更新用户
     @PutMapping(value = "/entityuser/{uesrID}")
-    public Entityuser userUpdate(@RequestParam("username") String username, @RequestParam("password") String password,
+    public Entityuser userUpdate(@RequestParam("userName") String userName, @RequestParam("password") String password,
                            @RequestParam("address") String address, @RequestParam("phonenumber")String phonenumber,
                            @RequestParam("avatar") String avatar, @RequestParam("qq")String qq,
                            @RequestParam("introduction") String introduction){
 
         Entityuser entityuser=new Entityuser();
-        entityuser.setUsername(username);
+        entityuser.setUserName(userName);
         entityuser.setPassword(password);
         entityuser.setAddress(address);
         entityuser.setPhonenumber(phonenumber);

@@ -13,12 +13,14 @@ import java.util.List;
 public class MemeController {
     @Autowired
     private EntitymemeRepository entitymemeRepository;
+
     /**
      * 查询表情包列表
      * @return
      */
-    @RequestMapping(value = "/entitymemelist",method = RequestMethod.GET)
-    public List<Entitymeme> entitymemeList(){
+    @RequestMapping(value = "/entitymemelist",method = RequestMethod.POST)
+    public List<Entitymeme> data(){
+        System.out.println("yes");
         return  entitymemeRepository.findAll();
     }
 
@@ -34,7 +36,8 @@ public class MemeController {
     @PostMapping(value = "/addmeme")
     public Entitymeme UserAdd(@RequestParam("memeName")String memeName, @RequestParam("downloads")Integer downloads,
                               @RequestParam("memeIntro") String memeIntro, @RequestParam("upTime") java.sql.Date upTime,
-                              @RequestParam("classis") String classis){
+                              @RequestParam("classis") String classis,@RequestParam("author")String author,
+                              @RequestParam("src") String src){
         System.out.println("yes2");
         Entitymeme entitymeme=new Entitymeme();
         entitymeme.setMemeName(memeName);
@@ -42,6 +45,8 @@ public class MemeController {
         entitymeme.setUpTime(upTime);
         entitymeme.setMemeIntro(memeIntro);
         entitymeme.setClassis(classis);
+        entitymeme.setAuthor(author);
+        entitymeme.setSrc(src);
 
 
         return entitymemeRepository.save(entitymeme);
@@ -57,7 +62,7 @@ public class MemeController {
     @PutMapping(value = "/entitymeme/{memeID}")
     public Entitymeme UserUpdata(@RequestParam("memeName")String memeName, @RequestParam("downloads")Integer downloads,
                               @RequestParam("memeIntro") String memeIntro, @RequestParam("upTime") java.sql.Date upTime,
-                              @RequestParam("classis") String classis){
+                              @RequestParam("classis") String classis,@RequestParam("author")String author){
         System.out.println("yes2");
         Entitymeme entitymeme=new Entitymeme();
         entitymeme.setMemeName(memeName);
@@ -65,6 +70,7 @@ public class MemeController {
         entitymeme.setUpTime(upTime);
         entitymeme.setMemeIntro(memeIntro);
         entitymeme.setClassis(classis);
+        entitymeme.setAuthor(author);
 
 
         return entitymemeRepository.save(entitymeme);
