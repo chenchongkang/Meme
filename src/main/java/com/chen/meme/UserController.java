@@ -28,9 +28,7 @@ public class UserController {
      */
     @PostMapping(value = "/entityuser")
     public Entityuser UserAdd(@RequestBody(required =false) Entityuser entityuser) {
-        Entityuser s=entityuser;
-//        s = new String(s.getUsername("iso-8859-1"),"gbk");
-//        URLDecoder.decode(String.valueOf(entityuser),"UTF-8");
+//        Entityuser s=entityuser;
         System.out.println(entityuser.getUserName()+" yoooooooooooooooooooo");
         return entityuserRepository.save(entityuser);
 

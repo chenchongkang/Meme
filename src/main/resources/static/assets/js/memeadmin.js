@@ -41,6 +41,10 @@ function getmeme(){
         }
     });
 
-}function addmeme() {
+}
+function addmeme() {
     window.location.href="http://localhost:8081/meme/memeadd.html";
+}
+function mememanage() {
+    window.location.href="http://localhost:8081/meme/admin-meme.html"
 }
