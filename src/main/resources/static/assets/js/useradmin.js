@@ -26,7 +26,7 @@
 function getusers(){
     $.ajax({
         type: "post",
-        url: "http://localhost:8081/meme/hello/data",    //向后端请求数据的url
+        url: "http://localhost:8081/meme/data",    //向后端请求数据的url
         dataType:"json",
         contentType: "application/json; charset=utf-8",
         // data:{"userID":['userID'],"username":['username'],"password":['password'],"address":['address'],"phonenumber":['phonenumber'],"avatar":['avatar'],"qq":['qq'],"introduction":['introduction']},

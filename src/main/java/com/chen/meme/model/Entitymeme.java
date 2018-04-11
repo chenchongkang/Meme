@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 @Entity
 public class Entitymeme {
@@ -15,7 +14,7 @@ public class Entitymeme {
     private String memeName;
     private Integer downloads;
     private String memeIntro;
-    private Timestamp upTime;
+    private String upTime;
     private String classis;//classes 貌似会出错
     private String author;
     private String cover;
@@ -61,12 +60,21 @@ public class Entitymeme {
     }
 
     public String getUpTime() {
-        return upTime.toString();
+        String str = upTime.toString();
+        str = str.substring(0, str.length() - 2);
+        return str;
     }
 
-    public void setUpTime(long upTime) {
-        this.upTime = new Timestamp(upTime);
+    public void setUpTime(String upTime) {
+        this.upTime = upTime;
     }
+
+//    public String getUpTime() {
+//        return upTime.toString();
+//    }
+//    public void setUpTime(String upTime) {
+//        this.upTime = new Timestamp(upTime);
+//    }
 
     public String getClassis() {
         return classis;
