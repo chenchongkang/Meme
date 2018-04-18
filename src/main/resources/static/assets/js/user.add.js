@@ -33,12 +33,16 @@ function add() {
             dataType:"json",
             contentType: "application/json; charset=utf-8",
             data:'{"userName":'+userName+',"password":'+password1+',"address":'+useremail+',"phonenumber":'+userphone+',"avatar":"1.img","qq":'+userQQ+',"introduction":'+userintro+'}',
-            success:function(){
-                window.location.href= "http://localhost:8081/meme/admin-user.html"; //添加成功就跳转到login.html
+            success:function(redata){
+            if(redata.toString()==0)
+            {
+                alert("用户名已经存在");
+            }
+            else{
+            window.location.href= "http://localhost:8081/meme/admin-user.html"; //添加成功就跳转到login.html
+            }
             }
         });
-
-        alert("添加成功");
     }
 
     else if(document.getElementById("password1").value!=document.getElementById("password2").value)

@@ -21,7 +21,7 @@ public class LoginService {
         if(entityusers.size()<=0) {
             return "用户名密码错误";
         }else{
-            return entityusers.get(0).getUserName();//登录成功
+            return "success";//登录成功
         }
     }
 

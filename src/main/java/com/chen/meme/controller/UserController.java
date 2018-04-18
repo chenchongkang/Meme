@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 public class UserController {
+    private final int ERR=0;
 
 
     @Autowired
@@ -41,11 +42,14 @@ public class UserController {
      * @return
      */
     @PostMapping(value = "/entityuser")
-    public Entityuser UserAdd(@RequestBody(required =false) Entityuser entityuser) {
-        Entityuser s=entityuser;
-        System.out.println(entityuser.getUserName()+" yoooooooooooooooooooo");
+    public Object UserAdd(@RequestBody(required =false) Entityuser entityuser) {
+        List<Entityuser> list = entityuserRepository.findByUserName(entityuser.getUserName());
+        if(list.size()>0){
+            return ERR;
+        }
+        else{
         return entityuserRepository.save(entityuser);
-
+        }
     }
     //根据ID查询一个用户
     @GetMapping(value = "/entityuser/{userID}")

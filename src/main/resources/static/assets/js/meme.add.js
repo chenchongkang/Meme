@@ -1,5 +1,34 @@
 
 document.getElementById('file').onchange = function() {
+    if(typeof FileReader != 'undefined'){
+        var file = document.getElementById("file").files[0];
+        if((file.type).indexOf("image/")==-1){
+            alert("请上传图片!");
+        }
+    }else{
+        var fileName=document.getElementById("file").value;
+        var suffixIndex=fileName.lastIndexOf(".");
+        var suffix=fileName.substring(suffixIndex+1).toUpperCase();
+        if(suffix!="BMP"&&suffix!="JPG"&&suffix!="JPEG"&&suffix!="PNG"&&suffix!="GIF"){
+            alert( "请上传图片（格式BMP、JPG、JPEG、PNG、GIF等）!");
+        }
+    }
+    maxSize = 200*1024;//200KB
+    reader = new FileReader();
+    reader.onload=function () {
+        var result=this.result;
+        img=new image(),
+            img.src=result;
+        if(result.length<maxSize){
+            imgUpload(result);
+        }else {
+            var data=comparss(img)
+            imgUpload(data);
+        }
+        reader.readAsDataURL();
+    }
+
+
     var imgFile = this.files[0];
     var fr = new FileReader();
     fr.onload = function() {
@@ -7,6 +36,7 @@ document.getElementById('file').onchange = function() {
     };
     fr.readAsDataURL(imgFile);
 };
+
 
 function add() {
 
