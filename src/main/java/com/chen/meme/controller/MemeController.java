@@ -28,6 +28,17 @@ public class MemeController {
 //       System.out.println(entitymeme.getUpTime());
         return  entitymemeRepository.findAll();
     }
+    @PostMapping(value = "/addmemecover")
+      public Entitymeme addmemecover(@RequestBody(required =false) Entitymeme entitymeme) {
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        Timestamp now= new Timestamp(System.currentTimeMillis());
+        entitymeme.setUpTime(df.format(now));
+        System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+        System.out.println(entitymeme.toString());
+        return entitymemeRepository.save(entitymeme);
+    }
+
 
     /**
      * 添加表情包

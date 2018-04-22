@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="assets/css/admin.css">
 </head>
+
 <body>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type= "text/javascript" src= "js/ajaxfileupload.js" ></script>
 
 <header class="am-topbar admin-header">
 
@@ -94,14 +98,14 @@
 
                             <!--显示div-->
                             <div id="image" class="am-u-md-4">
-                                <img class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                                <img id="id_license_img" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
                             </div>
 
                             <div class="am-u-md-8">
                                 <p>点击选择文件选择表情包封面图片。</p>
                                 <form class="am-form">
                                     <div class="am-form-group">
-                                        <input type="file" id="file" name="" />
+                                        <input type="file" id="file" name="license" ACCEPT="image/bmp,image/jpg,image/gif,image/jpeg,image/png"/>
                                         <p class="am-form-help">请选择要上传的文件...</p>
                                         <button type="button" class="am-btn am-btn-primary am-btn-xs">保存</button>
                                     </div>
