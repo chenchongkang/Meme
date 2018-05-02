@@ -11,10 +11,28 @@ public class Entityevaluation {
     @Id
     @GeneratedValue
     private Integer evaluationID;
-    private String  evaluations;
-    private Time    evaluationTime;
+    private Integer userID;
+    private Integer memeID;
+    private Double evaluations;
+    private String evaluationTime;
 
     public Entityevaluation() {
+    }
+
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
+
+    public Integer getMemeID() {
+        return memeID;
+    }
+
+    public void setMemeID(Integer memeID) {
+        this.memeID = memeID;
     }
 
     public Integer getEvaluationID() {
@@ -25,19 +43,19 @@ public class Entityevaluation {
         this.evaluationID = evaluationID;
     }
 
-    public String getEvaluations() {
+    public Double getEvaluations() {
         return evaluations;
     }
 
-    public void setEvaluations(String evaluations) {
+    public void setEvaluations(Double evaluations) {
         this.evaluations = evaluations;
     }
 
-    public Time getEvaluationTime() {
+    public String getEvaluationTime() {
         return evaluationTime;
     }
 
-    public void setEvaluationTime(Time evaluationTime) {
+    public void setEvaluationTime(String evaluationTime) {
         this.evaluationTime = evaluationTime;
     }
 }

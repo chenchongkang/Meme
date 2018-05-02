@@ -16,11 +16,7 @@
     <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 
-<!--<script type="text/javascript">-->
-    <!--function myfun()-->
-    <!--{ 　　 alert("this window.onload"); 　　} 　　/*用window.onload调用myfun()*/-->
-    <!--window.onload = myfun;//不要括号-->
-<!--</script>-->
+
 
 <body onload="getusers();">
 
@@ -56,7 +52,7 @@
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                 <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-                    <li><a href="admin-user-edit.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                    <li><a href="tuijianmeme.html" class="am-cf"><span class="am-icon-check"></span> 个人推荐查询<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
                     <li><a href="admin-help.html" ><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
                     <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
                 </ul>
@@ -97,8 +93,6 @@
                         <div class="am-btn-group am-btn-group-xs">
                             <button type="button" onclick="adduser()" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
                             <button id="shuaxin" onclick="getusers()" type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 刷新</button>
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
-                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
                         </div>
 
                     </div>
@@ -107,9 +101,9 @@
             <div class="am-u-md-3 am-cf">
                 <div class="am-fr">
                     <div class="am-input-group am-input-group-sm">
-                        <input type="text" class="am-form-field">
+                        <input type="text" id="search" class="am-form-field">
                         <span class="am-input-group-btn">
-                  <button class="am-btn am-btn-default" type="button" onclick="getusers()">搜索</button>
+                  <button class="am-btn am-btn-default" type="button" onclick="searchusers()">搜索</button>
                 </span>
                     </div>
                 </div>
@@ -178,10 +172,10 @@
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/useradmin.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/amazeui.min.js"></script>
 <!--<![endif]-->
-<script src="assets/js/useradmin.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>

@@ -54,7 +54,7 @@
             <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                 <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-                    <li><a href="admin-user-edit.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                    <li><a href="tuijianmeme.html" class="am-cf"><span class="am-icon-check"></span> 个人推荐查询<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
                     <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
                     <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
                 </ul>
@@ -92,49 +92,33 @@
         <div class="am-g">
 
             <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+                <!--封面-->
                 <div class="am-panel am-panel-default">
                     <div class="am-panel-bd">
                         <div class="am-g">
-
                             <!--显示div-->
                             <div id="image" class="am-u-md-4">
                                 <img id="id_license_img" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
                             </div>
-
                             <div class="am-u-md-8">
-                                <p>点击选择文件选择表情包封面图片。</p>
+                                <p>点击选择文件选择表情包封面图片</p>
                                 <form class="am-form">
                                     <div class="am-form-group">
                                         <input type="file" id="file" name="license" ACCEPT="image/bmp,image/jpg,image/gif,image/jpeg,image/png"/>
                                         <p class="am-form-help">请选择要上传的文件...</p>
-                                        <button type="button" class="am-btn am-btn-primary am-btn-xs">保存</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-bd">
-                        <div class="user-info">
-                            <p>等级信息</p>
-                            <div class="am-progress am-progress-sm">
-                                <div class="am-progress-bar" style="width: 60%"></div>
-                            </div>
-                            <p class="user-info-order">当前等级：<strong>LV8</strong> 活跃天数：<strong>587</strong> 距离下一级别：<strong>160</strong></p>
-                        </div>
-                        <div class="user-info">
-                            <p>信用信息</p>
-                            <div class="am-progress am-progress-sm">
-                                <div class="am-progress-bar am-progress-bar-success" style="width: 80%"></div>
-                            </div>
-                            <p class="user-info-order">信用等级：正常当前 信用积分：<strong>80</strong></p>
-                        </div>
-                    </div>
-                </div>
-
+                <!--表情包图片-->
+                <!--<div class="am-panel am-panel-default">-->
+                    <!--<p>点击"添加表情包图片"按钮上传表情包图片</p>-->
+                    <!--<button id="addpicture" type="button" class="am-btn am-btn-primary am-btn-xs">添加表情包图片</button>-->
+                <!--</div>-->
             </div>
+
 
             <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
                 <form class="am-form am-form-horizontal">
@@ -179,13 +163,13 @@
                         <label for="meme_intro" class="am-u-sm-3 am-form-label">表情包描述 / Intro</label>
                         <div class="am-u-sm-9">
                             <textarea class="" rows="5" id="meme_intro" placeholder="输入表情包简介"></textarea>
-                            <small>250字以内写出表情包的特点...</small>
+                            <small>25字以内写出表情包的特点...</small>
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <button id="user-add" type="button" class="am-btn am-btn-primary" onclick="add()">提交</button>
+                            <button id="user-add" type="button" class="am-btn am-btn-primary" onclick="add()">添加表情包图片</button>
                         </div>
                     </div>
                 </form>

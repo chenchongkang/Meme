@@ -10,7 +10,7 @@ public class Entitymeme {
     @Id
     @GeneratedValue
     private Integer memeID;
-    private String src;
+    private String memeSrc;
     private String memeName;
     private Integer downloads;
     private String memeIntro;
@@ -27,12 +27,12 @@ public class Entitymeme {
         this.memeID = memeID;
     }
 
-    public String getSrc() {
-        return src;
+    public String getMemeSrc() {
+        return memeSrc;
     }
 
-    public void setSrc(String src) {
-        this.src = src;
+    public void setMemeSrc(String memeSrc) {
+        this.memeSrc = memeSrc;
     }
 
     public String getMemeName() {

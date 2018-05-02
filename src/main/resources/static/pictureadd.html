@@ -1,7 +1,6 @@
 <!doctype html>
-<html class="no-js">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MemeApplication后台管理系统</title>
     <meta name="description" content="这是一个 user 页面">
@@ -15,7 +14,11 @@
     <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="assets/css/admin.css">
 </head>
-<body>
+
+<body onload="memeinfor();">
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type= "text/javascript" src= "js/ajaxfileupload.js" ></script>
 
 <header class="am-topbar admin-header">
 
@@ -80,96 +83,74 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加用户</strong> / <small>Add User</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加表情包图片</strong> / <small>Add Meme</small></div>
         </div>
 
         <hr/>
 
         <div class="am-g">
-            <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-bd">
-                        <div class="am-g">
-                            <!--显示div-->
-                            <div id="image" class="am-u-md-4">
-                                <img class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
-                            </div>
 
-                            <div class="am-u-md-8">
-                                <p>点击选择文件选择您想要的图片当作您的头像。</p>
-                                <form class="am-form">
-                                    <div class="am-form-group">
-                                        <input type="file" id="file" name="" />
-                                        <p class="am-form-help">请选择要上传的文件...</p>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
+                <!--封面-->
+                <!--表情包图片-->
             </div>
 
             <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
                 <form class="am-form am-form-horizontal">
+
                     <div class="am-form-group">
-                        <label for="user_name" class="am-u-sm-3 am-form-label">昵称 / Name</label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="user_name" placeholder="昵称 / Name">
-                            <small>输入你的昵称，让我们记住你，同时也是你的登录用户名。</small>
+                        <label for="meme_id" class="am-u-sm-4 am-form-label">表情包ID  /  memeID</label>
+                        <div class="am-u-sm-8">
+                            <input type="text" disabled="disabled" id="meme_id" placeholder="表情包ID / memeID">
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="meme_src" class="am-u-sm-4 am-form-label">表情包图片路径 / Src</label>
+                        <div class="am-u-sm-8">
+                            <input type="text" disabled="disabled" id="meme_src" placeholder="表情包图片路径 / Src">
                         </div>
                     </div>
 
+
+                     <!--选择文件-->
                     <div class="am-form-group">
-                        <label for="user_name" class="am-u-sm-3 am-form-label">密码 / Password</label>
                         <div class="am-u-sm-9">
-                            <input type="password" id="password1" placeholder="密码 / Password">
-                            <small>这是登录使用的密码，请牢记</small>
+                            <input type="file" id="file1" name="license" ACCEPT="image/*" onchange="preview(0)" multiple/>
                         </div>
                     </div>
 
-                    <div class="am-form-group">
-                        <label for="user_name" class="am-u-sm-3 am-form-label">确认密码 / Password</label>
-                        <div class="am-u-sm-9">
-                            <input type="password" id="password2" placeholder="密码 / Password">
-                            <small>请再次确认密码</small>
-                        </div>
+                    <!--显示图片-->
+                    <div id="image1" class="am-u-md-13">
+                        <img id="id_license_img1" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                    </div>
+                    <div id="image2" class="am-u-md-13">
+                        <img id="id_license_img2" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                    </div>
+                    <div id="image3" class="am-u-md-13">
+                        <img id="id_license_img3" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                    </div>
+                    <div id="image4" class="am-u-md-13">
+                        <img id="id_license_img4" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                    </div>
+                    <div id="image5" class="am-u-md-13">
+                        <img id="id_license_img5" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                    </div>
+                    <div id="image6" class="am-u-md-13">
+                        <img id="id_license_img6" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                    </div>
+                    <div id="image7" class="am-u-md-13">
+                        <img id="id_license_img7" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                    </div>
+                    <div id="image8" class="am-u-md-13">
+                        <img id="id_license_img8" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
                     </div>
 
                     <div class="am-form-group">
-                        <label for="user-email" class="am-u-sm-3 am-form-label">电子邮件 / Email</label>
-                        <div class="am-u-sm-9">
-                            <input type="email" id="user-email" placeholder="输入你的电子邮件 / Email">
-                            <small>邮箱你懂得...</small>
+                        <div class="am-u-sm-9 am-u-sm-push-6">
+                            <button id="picture_add" type="button" class="am-btn am-btn-primary" onclick="tijiao()">提交</button>
                         </div>
                     </div>
 
-                    <div class="am-form-group">
-                        <label for="user-phone" class="am-u-sm-3 am-form-label">电话 / Telephone</label>
-                        <div class="am-u-sm-9">
-                            <input type="email" id="user-phone" placeholder="输入你的电话号码 / Telephone">
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="user-QQ" class="am-u-sm-3 am-form-label">QQ</label>
-                        <div class="am-u-sm-9">
-                            <input type="email" id="user-QQ" placeholder="输入你的QQ号码">
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="user-intro" class="am-u-sm-3 am-form-label">简介 / Intro</label>
-                        <div class="am-u-sm-9">
-                            <textarea class="" rows="5" id="user-intro" maxlength="25" placeholder="输入个人简介"></textarea>
-                            <small>25字以内写出你眼中的自己...</small>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <div class="am-u-sm-9 am-u-sm-push-3">
-                            <button id="user-add" type="button" class="am-btn am-btn-primary" onclick="add()">添加用户</button>
-                        </div>
-                    </div>
                 </form>
             </div>
         </div>
@@ -192,9 +173,10 @@
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/pictureadd.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/amazeui.min.js"></script>
-<script src="assets/js/user.add.js"></script>
+<script src="assets/js/meme.add.js"></script>
 <!--<![endif]-->
 <script src="assets/js/app.js"></script>
 

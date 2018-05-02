@@ -1,12 +1,9 @@
 package com.chen.meme.server;
 
-import com.chen.meme.EntityuserRepository;
+import com.chen.meme.repository.EntityuserRepository;
 import com.chen.meme.model.Entityuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

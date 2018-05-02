@@ -4,14 +4,16 @@
     var jiluHTML= "";
     for(var i = 0;i<length;i++)
     {
+        var b = JSON.stringify(data[i].userID);
         var a=i+1;
         boxHTML+='<tr ><td><input type="checkbox" id=""comicTypeGroup_'+i+'" /></td><td>'+a+'</td><td><a href="#">'+data[i].userName+'</a></td>' +
             '<td>'+data[i].address+'</td>' +
             '<td>'+data[i].phonenumber+'</td><td>'+data[i].qq+'</td><td><div class="am-btn-toolbar"><div class="am-btn-group am-btn-group-xs">' +
-            '<button class="am-btn am-btn-default am-btn-xs am-text-secondary">' +
-            '<span class="am-icon-pencil-square-o"></span> 编辑</button>' +
-            '<button class="am-btn am-btn-default am-btn-xs am-text-danger">' +
-            '<span class="am-icon-trash-o"></span> 删除</button></div></div></td></tr>&nbsp;';
+            '<button type="button" onclick="Updata('+b+')" class="am-btn am-btn-default"><span class="am-icon-archive"></span> ' +
+            '编辑</button>' +
+            '<button type="button" onclick="Delete('+b+')" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> ' +
+            '删除</button>' +
+            '</div></div></td></tr>&nbsp;';
         if(i!=0 && i%6==0)
             boxHTML+='<br/>';
     }
@@ -20,8 +22,28 @@
     groupdiv.innerHTML = boxHTML;
     var jiludiv = document.getElementById('div_jilu');
     jiludiv.innerHTML = jiluHTML;
-    // checkboxOnClick(length);//必须加在这里
 }
+
+    function Updata(b) {
+        window.location.href="http://localhost:8081/meme/userupdate.html?id="+b;
+    }
+
+
+
+    function Delete(b) {
+        $.ajax({
+            type: "post", //请求方式
+            url: "./entityuser/dele/"+b, //路径
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (redata) {
+                if(redata.toString()==0){
+                    alert("删除成功");
+                    window.location.href = "http://localhost:8081/meme/admin-user.html"; //删除成功刷新界面
+                }
+            }
+        });
+    }
 //获取用户数据库的函数
 function getusers(){
     $.ajax({
@@ -42,6 +64,23 @@ function getusers(){
     });
 }
 
+function searchusers(){
+    $.ajax({
+        type: "get",
+        url: "entityuser/"+document.getElementById('search').value.toString(),    //向后端请求数据的url
+        dataType:"json",
+        contentType: "application/json; charset=utf-8",
+        cache:false,
+        success: function (data) {
+            // alert(JSON.stringify(data));
+            var length = data.length;
+            adduserTypeToBox(data,length);
+        }
+        // error:function() {
+        //     alert("listComicType error");
+        // }
+    });
+}
 //usermanage点击事件
 function usermanage() {
     window.location.href="http://localhost:8081/meme/admin-user.html";

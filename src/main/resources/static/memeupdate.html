@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MemeApplication后台管理系统</title>
     <meta name="description" content="这是一个 user 页面">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="assets/css/admin.css">
 </head>
-<body>
+<body onload="updateEdt();">
 
 <header class="am-topbar admin-header">
 
@@ -80,7 +80,7 @@
     <!-- content start -->
     <div class="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加用户</strong> / <small>Add User</small></div>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加表情包</strong> / <small>Add Meme</small></div>
         </div>
 
         <hr/>
@@ -92,14 +92,13 @@
                         <div class="am-g">
                             <!--显示div-->
                             <div id="image" class="am-u-md-4">
-                                <img class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                                <img id="id_license_img" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
                             </div>
-
                             <div class="am-u-md-8">
-                                <p>点击选择文件选择您想要的图片当作您的头像。</p>
+                                <p>点击选择文件选择表情包封面图片。</p>
                                 <form class="am-form">
                                     <div class="am-form-group">
-                                        <input type="file" id="file" name="" />
+                                        <input type="file" id="file" name="license" ACCEPT="image/bmp,image/jpg,image/gif,image/jpeg,image/png"/>
                                         <p class="am-form-help">请选择要上传的文件...</p>
                                     </div>
                                 </form>
@@ -112,62 +111,53 @@
             <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
                 <form class="am-form am-form-horizontal">
                     <div class="am-form-group">
-                        <label for="user_name" class="am-u-sm-3 am-form-label">昵称 / Name</label>
+                        <label for="meme_name" class="am-u-sm-3 am-form-label">表情包名 / Name</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="user_name" placeholder="昵称 / Name">
-                            <small>输入你的昵称，让我们记住你，同时也是你的登录用户名。</small>
+                            <input type="text" id="meme_name" placeholder="表情包名 / Name">
+                            <small>好的表情包名，能让用户印象深刻。</small>
                         </div>
                     </div>
 
                     <div class="am-form-group">
-                        <label for="user_name" class="am-u-sm-3 am-form-label">密码 / Password</label>
+                        <label for="meme_name" class="am-u-sm-3 am-form-label">类别 / Classes</label>
                         <div class="am-u-sm-9">
-                            <input type="password" id="password1" placeholder="密码 / Password">
-                            <small>这是登录使用的密码，请牢记</small>
+                            <select id="meme_classes">
+                                <option value="type1">所有类别</option>
+                                <option value="type2">暴漫</option>
+                                <option value="type3">明星</option>
+                            </select>
+                            <small>为了方便管理，请为表情包分类。</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
+                        <label for="meme_name" class="am-u-sm-3 am-form-label">作者 / Author</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="meme_author" placeholder="作者 / Author">
+                            <small>请给出表情包的来源。</small>
+                        </div>
+                    </div>
+
+
+
+                    <div class="am-form-group">
+                        <label for="meme_name" class="am-u-sm-3 am-form-label">表情包图片路径 / src</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="meme_src" placeholder="表情包图片路径 / src">
+                            <small>添加表情包图片路径。</small>
                         </div>
                     </div>
 
                     <div class="am-form-group">
-                        <label for="user_name" class="am-u-sm-3 am-form-label">确认密码 / Password</label>
+                        <label for="meme_intro" class="am-u-sm-3 am-form-label">表情包描述 / Intro</label>
                         <div class="am-u-sm-9">
-                            <input type="password" id="password2" placeholder="密码 / Password">
-                            <small>请再次确认密码</small>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="user-email" class="am-u-sm-3 am-form-label">电子邮件 / Email</label>
-                        <div class="am-u-sm-9">
-                            <input type="email" id="user-email" placeholder="输入你的电子邮件 / Email">
-                            <small>邮箱你懂得...</small>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="user-phone" class="am-u-sm-3 am-form-label">电话 / Telephone</label>
-                        <div class="am-u-sm-9">
-                            <input type="email" id="user-phone" placeholder="输入你的电话号码 / Telephone">
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="user-QQ" class="am-u-sm-3 am-form-label">QQ</label>
-                        <div class="am-u-sm-9">
-                            <input type="email" id="user-QQ" placeholder="输入你的QQ号码">
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="user-intro" class="am-u-sm-3 am-form-label">简介 / Intro</label>
-                        <div class="am-u-sm-9">
-                            <textarea class="" rows="5" id="user-intro" maxlength="25" placeholder="输入个人简介"></textarea>
-                            <small>25字以内写出你眼中的自己...</small>
+                            <textarea class=""  maxlength="25" rows="5" id="meme_intro" placeholder="输入表情包简介"></textarea>
+                            <small>25字以内写出表情包的特点...</small>
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <button id="user-add" type="button" class="am-btn am-btn-primary" onclick="add()">添加用户</button>
+                            <button id="user-add" type="button" class="am-btn am-btn-primary" onclick="tijiao()">提交</button>
                         </div>
                     </div>
                 </form>
@@ -192,9 +182,9 @@
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/meme.update.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/amazeui.min.js"></script>
-<script src="assets/js/user.add.js"></script>
 <!--<![endif]-->
 <script src="assets/js/app.js"></script>
 

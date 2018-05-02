@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
     <link rel="stylesheet" href="assets/css/admin.css">
 </head>
-<body>
+
+<body onload="updateuserEdt()">
 
 <header class="am-topbar admin-header">
 
@@ -91,8 +92,9 @@
                     <div class="am-panel-bd">
                         <div class="am-g">
                             <!--显示div-->
+
                             <div id="image" class="am-u-md-4">
-                                <img class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
+                                <img id="pic" class="am-img-circle am-img-thumbnail" src="picture/timg4.jpg" alt="" style="width:100px;height:100px;"/>
                             </div>
 
                             <div class="am-u-md-8">
@@ -160,14 +162,14 @@
                     <div class="am-form-group">
                         <label for="user-intro" class="am-u-sm-3 am-form-label">简介 / Intro</label>
                         <div class="am-u-sm-9">
-                            <textarea class="" rows="5" id="user-intro" maxlength="25" placeholder="输入个人简介"></textarea>
+                            <textarea class="" rows="5" id="user-intro" placeholder="输入个人简介"></textarea>
                             <small>25字以内写出你眼中的自己...</small>
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <button id="user-add" type="button" class="am-btn am-btn-primary" onclick="add()">添加用户</button>
+                            <button id="user-add" type="button" class="am-btn am-btn-primary" onclick="tijiao()">提交</button>
                         </div>
                     </div>
                 </form>
@@ -192,9 +194,9 @@
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/user.update.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/amazeui.min.js"></script>
-<script src="assets/js/user.add.js"></script>
 <!--<![endif]-->
 <script src="assets/js/app.js"></script>
 

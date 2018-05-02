@@ -15,7 +15,11 @@
   <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
   <link rel="stylesheet" href="assets/css/admin.css">
 </head>
+
 <body onload="getmeme();">
+<!--<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>-->
+<!--<script src="js/jquery-2.2.3.min.js"></script>-->
+<!--<script src="js/jquery.params.js"></script>-->
 
 <header class="am-topbar admin-header">
   <div class="am-topbar-brand">
@@ -48,7 +52,7 @@
       <li class="admin-parent">
         <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
         <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-          <li><a href="admin-user-edit.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+          <li><a href="tuijianmeme.html" class="am-cf"><span class="am-icon-check"></span> 个人推荐查询<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
           <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
           <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
         </ul>
@@ -89,17 +93,14 @@
             <div class="am-btn-group am-btn-group-xs">
               <button type="button" class="am-btn am-btn-default" onclick="addmeme()"><span class="am-icon-plus"></span> 新增</button>
               <button type="button" class="am-btn am-btn-default" onclick="getmeme()"><span class="am-icon-save"></span> 刷新</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
-              <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+
             </div>
 
             <div class="am-form-group am-margin-left am-fl">
-              <select>
-                <option value="option1">所有类别</option>
-                <option value="option2">最新</option>
-                <option value="option3">最热</option>
-                <option value="option3">暴漫</option>
-                <option value="option3">明星</option>
+              <select id="select_classes" onchange="selectclassis()">
+                <option value="type1">所有类别</option>
+                <option value="type2">暴漫</option>
+                <option value="type3">明星</option>
               </select>
             </div>
           </div>
@@ -108,9 +109,9 @@
       <div class="am-u-md-3 am-cf">
         <div class="am-fr">
           <div class="am-input-group am-input-group-sm">
-            <input type="text" class="am-form-field">
+            <input id="search" type="text" class="am-form-field">
                 <span class="am-input-group-btn">
-                  <button class="am-btn am-btn-default" type="button">搜索</button>
+                  <button onclick="searchusers()" class="am-btn am-btn-default" type="button">搜索</button>
                 </span>
           </div>
         </div>

@@ -19,6 +19,7 @@ public class Entityuser {
     private String qq;
     private String introduction;
 
+
     public String getUserName() {
         return userName;
     }
