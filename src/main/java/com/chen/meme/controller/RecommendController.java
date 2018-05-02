@@ -34,7 +34,11 @@ public class RecommendController {
             myEvalMemeIDList.add(a.getMemeID());
         }
         System.out.println("目标用户评价过的表情包"+myEvalMemeIDList);
-
+        //如果目标用户没有评价过表情包
+        if (myEvalMemeIDList.size()==0){
+            System.out.println("无法推荐：目标用户评价的表情包个数为"+myEvalMemeIDList);
+            return false;
+        }
         //存储目标用户与其他用户的欧几里德距离
         ArrayList<Oujilide> oujilides=new ArrayList<Oujilide>();
         // 遍历用户表
@@ -90,22 +94,22 @@ public class RecommendController {
             System.out.println("欧几里德距离：相似度"+similarity);
             oujilides.add(new Oujilide(user.getUserID(), similarity));
             }
-        System.out.println(oujilides.get(0).getOjldjl());
-        System.out.println(oujilides.get(0).getUserID());
-        System.out.println(oujilides.get(1).getOjldjl());
-        System.out.println(oujilides.get(1).getUserID());
-        System.out.println(oujilides.get(2).getOjldjl());
-        System.out.println(oujilides.get(2).getUserID());
+//        System.out.println(oujilides.get(0).getOjldjl());
+//        System.out.println(oujilides.get(0).getUserID());
+//        System.out.println(oujilides.get(1).getOjldjl());
+//        System.out.println(oujilides.get(1).getUserID());
+//        System.out.println(oujilides.get(2).getOjldjl());
+//        System.out.println(oujilides.get(2).getUserID());
 
         //求相似度前三的相邻用户集合，将用户id与相似度存储在oujilides1中
         ArrayList<Oujilide>oujilides1=new ArrayList<Oujilide>();
         int len = oujilides.size();
         if(len<=0){
-
+        System.out.println("该用户没有相似用户");
         }else if(len ==1){
-
+        System.out.println("该用户只有一个相似用户");
         }else if(len ==2){
-
+        System.out.println("该用户只有两个相似用户");
         }else {
             int[] maxList = new int[3];
             if(oujilides.get(0).getOjldjl()>oujilides.get(1).getOjldjl()){
@@ -168,12 +172,12 @@ public class RecommendController {
 //           System.out.println("a="+a);
 //            oujilides1.add(new Oujilide(oujilides.get(a).getUserID(),oujilides.get(a).getOjldjl()));
         System.out.println("前三个相似用户及相似度");
-        System.out.println(oujilides1.get(0).getOjldjl());
-        System.out.println(oujilides1.get(0).getUserID());
-        System.out.println(oujilides1.get(1).getOjldjl());
-        System.out.println(oujilides1.get(1).getUserID());
-        System.out.println(oujilides1.get(2).getOjldjl());
-        System.out.println(oujilides1.get(2).getUserID());
+//        System.out.println(oujilides1.get(0).getOjldjl());
+//        System.out.println(oujilides1.get(0).getUserID());
+//        System.out.println(oujilides1.get(1).getOjldjl());
+//        System.out.println(oujilides1.get(1).getUserID());
+//        System.out.println(oujilides1.get(2).getOjldjl());
+//        System.out.println(oujilides1.get(2).getUserID());
 
         //存储相邻用户喜欢（评价为5分）的表情包ID
         ArrayList<Otherlike> otherUserLikeMemeidlist=new ArrayList<Otherlike>();
@@ -187,11 +191,6 @@ public class RecommendController {
               otherUserLikeMemeidlist.add(new Otherlike(otherUserEvaluation2.getUserID(),otherUserEvaluation2.getMemeID()));
         }
         }
-//            for (Entityevaluation otherUserEvaluation2:otherUserEvaluation1){
-//            if(otherUserEvaluation2.getEvaluations()==5.0){
-//                otherUserLikeMemeidlist.add(new Otherlike(otherUserEvaluation2.getUserID(),otherUserEvaluation2.getMemeID()));
-//            }
-//        }
 
         System.out.println("其他用户评价为5的表情包"+otherUserLikeMemeidlist.size());
 
@@ -210,35 +209,28 @@ public class RecommendController {
         }
         }
 
-
+        System.out.println("评价为5且目标用户没有的表情包"+otherUserLikeAndMyNotMemeidlist.size());
 
         //排除重复推荐(A、B、C)相似用户同时推荐表情包a
         ArrayList<Otherlike>NotrepeatMemeidlist=new ArrayList<Otherlike>();
-
-//        otherUserLikeAndMyNotMemeidlist.add(new Otherlike(otherUserLikeAndMyNotMemeidlist.get(0).getOtheruserID(),
-//                otherUserLikeAndMyNotMemeidlist.get(0).getOtherlisememeID()));
-        System.out.println("评价为5且目标用户没有的表情包"+otherUserLikeAndMyNotMemeidlist.size());
-//        System.out.println("评价为5且目标用户没有的表情包"+otherUserLikeAndMyNotMemeidlist.get(0).getOtherlisememeID());
-//        System.out.println("评价为5且目标用户没有的表情包"+otherUserLikeAndMyNotMemeidlist.get(1).getOtherlisememeID());
-//        System.out.println("评价为5且目标用户没有的表情包"+otherUserLikeAndMyNotMemeidlist.get(0).getOtheruserID());
-//        System.out.println("评价为5且目标用户没有的表情包"+otherUserLikeAndMyNotMemeidlist.get(1).getOtheruserID());
-
-
         NotrepeatMemeidlist.add(new Otherlike(otherUserLikeAndMyNotMemeidlist.get(0).getOtheruserID(),
                 otherUserLikeAndMyNotMemeidlist.get(0).getOtherlisememeID()));
         for (int i=0;i<otherUserLikeAndMyNotMemeidlist.size()-1;i++) {
-            for (int j = 0; j <= otherUserLikeAndMyNotMemeidlist.size() - 1; j++) {
+            int k=0;
+            for (int j = 0; j <otherUserLikeAndMyNotMemeidlist.size() - 1; j++) {
                 if (otherUserLikeAndMyNotMemeidlist.get(i).getOtherlisememeID()
                         == otherUserLikeAndMyNotMemeidlist.get(j + 1).getOtherlisememeID()) {
                     break;
                 }
-                if (j > otherUserLikeAndMyNotMemeidlist.size() - 1) {
+                k=j;
+            }
+                if (k+1>= otherUserLikeAndMyNotMemeidlist.size() - 1) {
                     NotrepeatMemeidlist.add(new Otherlike(otherUserLikeAndMyNotMemeidlist.get(i + 1).getOtheruserID(),
                             otherUserLikeAndMyNotMemeidlist.get(i + 1).getOtherlisememeID()));
-                }
 
             }
         }
+
         System.out.println("取出重复后的表情包个数"+NotrepeatMemeidlist.size());
         //存储推荐给目标用户的表情包
         ArrayList<Entitymeme> tuijianList=new ArrayList<Entitymeme>();
@@ -250,24 +242,10 @@ public class RecommendController {
         for (int i=0;i<k;i++) {
 //            Entitymeme memeFindOne = entitymemeRepository.findOne(otherUserLikeMemeidlist.get(i).getOtherlisememeID());
             tuijianList.add( entitymemeRepository.findOne(NotrepeatMemeidlist.get(i).getOtherlisememeID()));
-
         }
         System.out.println("k的值"+k);
         System.out.println("推荐的表情包数"+tuijianList.size());
-
         return tuijianList;
-    }
-
-    //根据表情包ID查询表评价列表
-    @RequestMapping(value = "/evaluamemelists/{memeID}", method = RequestMethod.POST)
-    public List<Entityevaluation> memedata(@PathVariable("memeID") Integer memeID) {
-        return entityevaluationRepository.findAllByMemeID(memeID);
-    }
-
-    //根据用户ID查询表情包列表
-    @RequestMapping(value = "/evaluauserlists/{userID}", method = RequestMethod.POST)
-    public List<Entityevaluation> userdata(@PathVariable("userID") Integer userID) {
-        return entityevaluationRepository.findAllByUserID(userID);
     }
 
     private void myMax(int[] maxList,int max){
