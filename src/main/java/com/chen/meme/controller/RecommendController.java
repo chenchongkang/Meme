@@ -36,8 +36,9 @@ public class RecommendController {
         System.out.println("目标用户评价过的表情包"+myEvalMemeIDList);
         //如果目标用户没有评价过表情包
         if (myEvalMemeIDList.size()==0){
+             List<Entitymeme> data =entitymemeRepository.findAll();
             System.out.println("无法推荐：目标用户评价的表情包个数为"+myEvalMemeIDList);
-            return false;
+            return data;
         }
         //存储目标用户与其他用户的欧几里德距离
         ArrayList<Oujilide> oujilides=new ArrayList<Oujilide>();
@@ -245,6 +246,7 @@ public class RecommendController {
         }
         System.out.println("k的值"+k);
         System.out.println("推荐的表情包数"+tuijianList.size());
+        System.out.println(tuijianList.get(0).getMemeID());
         return tuijianList;
     }
 

@@ -70,12 +70,13 @@ function getmeme(){
     });
 }
 function selectclassis(obj) {
+    // alert(obj);
     if (obj.value.toString()=="type1"){
         getmeme();
     } else
         {   $.ajax({
-            type: "get",
-            url: "entitymemeclassis/" + obj.value.toString(),    //向后端请求数据的url
+            type: "post",
+            url: "entitymemeclassis/"+ obj.value.toString(),    //向后端请求数据的url
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             cache: false,

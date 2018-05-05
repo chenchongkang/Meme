@@ -1,11 +1,11 @@
 package com.chen.meme.controller;
 
-import com.chen.meme.model.Entityuser;
+
 import com.chen.meme.repository.EntitymemeRepository;
 import com.chen.meme.model.Entitymeme;
-import com.chen.meme.model.Entitypicture;
 import com.chen.meme.server.MemeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,7 +31,6 @@ public class MemeController {
 
     /**
      * 查询表情包列表
-     *
      * @return
      */
     @RequestMapping(value = "/entitymemelist", method = RequestMethod.POST)
@@ -40,8 +39,28 @@ public class MemeController {
     }
 
     /**
+     * 最新表情包
+     * @return
+     */
+    @RequestMapping(value = "/entitylatestmemelist", method = RequestMethod.POST)
+    public List<Entitymeme> latestList() {
+        Sort sort = new Sort(Sort.Direction.DESC, "memeID");
+        List<Entitymeme> list=entitymemeRepository.findAll(sort);
+        return list;
+    }
+
+        /**
+        * 最热表情包
+        */
+        @RequestMapping(value = "/entityhottestmemelist", method = RequestMethod.POST)
+        public List<Entitymeme> hottestList() {
+            Sort sort = new Sort(Sort.Direction.DESC, "downloads");
+            List<Entitymeme> list=entitymemeRepository.findAll(sort);
+            return list;
+        }
+
+    /**
      * 图片
-     *
      * @param entitymeme
      * @return
      */
@@ -106,7 +125,7 @@ public class MemeController {
      * @param classis
      * @return
      */
-    @GetMapping(value = "/entitymemeclassis/{classis}")
+    @PostMapping(value = "/entitymemeclassis/{classis}")
     public List<Entitymeme> memeListByClassis(@PathVariable("classis") String classis) {
         return entitymemeRepository.findByClassis(classis);
     }
@@ -167,7 +186,6 @@ public class MemeController {
 
     /**
      * 删除表情包
-     *
      * @param memeID
      * @return
      */
@@ -176,6 +194,7 @@ public class MemeController {
         entitymemeRepository.delete(memeID);
         return "0";//登录成功
     }
+
     /**
      * 获取表情包封面
      **/

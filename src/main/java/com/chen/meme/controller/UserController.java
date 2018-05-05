@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 public class UserController {
@@ -62,9 +63,9 @@ public class UserController {
     }
 
     //根据用户名查询用户
-    @GetMapping(value="/username/{userName}")
-    public List<Entityuser>entityusersByUserName(@PathVariable("userName")String userName){
-        return entityuserRepository.findByUserName(userName);
+    @PostMapping(value="/username/{userName}")
+    public Entityuser entityusersByUserName(@PathVariable("userName")String userName){
+        return entityuserRepository.findAllByUserName(userName);
     }
 
     //查询用户名和密码
@@ -158,6 +159,7 @@ public class UserController {
     @ResponseBody
     public void getLocalImage(@PathVariable("userID") Integer userID,HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("************************* ");
         List<Entityuser> list =  entityuserRepository.findByUserID(userID);
         Entityuser entityuser = list.get(0);
         String path = entityuser.getAvatar();

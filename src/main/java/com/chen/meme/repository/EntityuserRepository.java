@@ -12,6 +12,7 @@ public interface EntityuserRepository extends JpaRepository<Entityuser,Integer>{
     //通过用户昵称查询
 //    @Query(value = "select * from Entityuser u where u.userName= :username");
     public List<Entityuser> findByUserName(String username);
+    public Entityuser findAllByUserName(String username);
     public List<Entityuser> findByUserNameAndPassword(String username,String password);
 
 //    @Query(value = "select * from Entityuser u where u.userName= :username");
