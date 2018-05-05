@@ -171,8 +171,16 @@ public class MemeController {
             entitymeme.setAuthor(request.getParameter("meme_author"));
             entitymeme.setMemeSrc(request.getParameter("meme_src"));
             entitymeme.setMemeIntro(request.getParameter("meme_intro"));
+            String a=request.getParameter("meme_download");
+            int b = Integer.valueOf(a);
+            entitymeme.setDownloads(b);
+            if (file==null){
+                entitymeme.setCover(request.getParameter("meme_cover"));
+                return entitymemeRepository.save(entitymeme);
+            }else {
             String cover="cover";
             return memeService.coverFile(entitymeme,file,cover);
+            }
         }
     }
 //    @PostMapping(value = "/entitymemeupdate/{memeID}")

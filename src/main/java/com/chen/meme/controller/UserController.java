@@ -117,6 +117,10 @@ public class UserController {
             entityuser.setPhonenumber(request.getParameter("user-phone"));
             entityuser.setQq(request.getParameter("user-QQ"));
             entityuser.setIntroduction(request.getParameter("user-intro"));
+            if (file==null){
+                entityuser.setAvatar(request.getParameter("user_avatar"));
+                return  entityuserRepository.save(entityuser);
+            }
             String src="avatar";
             return memeService.avatarFile(entityuser,file,src);
         }

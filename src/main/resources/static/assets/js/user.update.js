@@ -51,6 +51,7 @@ function xiugai(data) {
     document.getElementById("user-phone").value=data.phonenumber.toString();
     document.getElementById("user-QQ").value=data.qq.toString();
     document.getElementById("user-intro").value=data.introduction.toString();
+    document.getElementById("user_avatar").value=data.avatar.toString();
 }
 
 function tijiao() {
@@ -81,6 +82,10 @@ function tijiao() {
         if (file.files && file.files[0]) {
             avatarpicture = file.files[0]
             formdata.append('file', avatarpicture);
+        }
+        else {
+            var userAvatar=document.getElementById("user_avatar").value;
+            formdata.append('user_avatar',userAvatar);
         }
         //用ajax来实现不刷新网页的基础上更新数据
         $.ajax({

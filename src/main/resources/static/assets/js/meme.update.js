@@ -47,6 +47,8 @@ function xiugai(data) {
     document.getElementById("meme_author").value=data.author.toString();
     document.getElementById("meme_src").value=data.memeSrc.toString();
     document.getElementById("meme_intro").value=data.memeIntro.toString();
+    document.getElementById("meme_cover").value=data.cover.toString();
+    document.getElementById("meme_download").value=data.downloads.toString();
     var img = null;
     var str = '';
     var div = document.getElementById("image");
@@ -105,17 +107,25 @@ function tijiao() {
             var src = document.getElementById("meme_src").value;
             // var src = JSON.stringify(d);
             var memeIntro = document.getElementById("meme_intro").value;
+            var memeCover =document.getElementById("meme_cover").value;
+            var memeDownload =document.getElementById("meme_download").value;
             // var memeIntro = JSON.stringify(e);
             formdata.append('meme_name',memeName);
             formdata.append('meme_classes',classis);
             formdata.append('meme_author',author);
             formdata.append('meme_src',src);
             formdata.append('meme_intro',memeIntro);
+            formdata.append("meme_download",memeDownload);
             var file=document.getElementById('file');
             if (file.files && file.files[0]) {
                 avatarpicture = file.files[0];
                 formdata.append('file',avatarpicture);
             }
+            else {
+                formdata.append('meme_cover',memeCover);
+            }
+
+
             //用ajax来实现不刷新网页的基础上更新数据
             $.ajax({
                 type: "post", //请求方式

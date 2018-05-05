@@ -61,7 +61,7 @@ public class Entitymeme {
 
     public String getUpTime() {
         String str = upTime.toString();
-        str = str.substring(0, str.length() - 2);
+        str = str.substring(0, str.length());
         return str;
     }
 
