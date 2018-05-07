@@ -2,11 +2,9 @@ package com.chen.meme.controller;
 
 import com.chen.meme.model.Entityevaluation;
 import com.chen.meme.repository.EntityevaluationRepository;
+import com.chen.meme.server.EvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,6 +12,17 @@ import java.util.List;
 public class EvaluationController {
     @Autowired
  private EntityevaluationRepository entityevaluationRepository;
+    @Autowired
+    EvaluationService evaluationService;
+
+    /**
+     * 添加一个评价
+     */
+    @PostMapping(value = "/addevaluation")
+    public Object Register(@RequestBody(required =false) Entityevaluation entityevaluation) {
+        entityevaluationRepository.save(entityevaluation);
+        return "success";
+    }
 
     /**
      * 查询表情包列表

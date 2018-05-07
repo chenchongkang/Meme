@@ -3,6 +3,7 @@ package com.chen.meme.model;
 public class Oujilide {
     private Integer userID;
     private Double ojldjl;
+    private int index;
 
     public Oujilide() {
     }
@@ -10,6 +11,12 @@ public class Oujilide {
     public Oujilide(Integer userID, Double ojldjl) {
         this.userID = userID;
         this.ojldjl = ojldjl;
+    }
+
+    public Oujilide(Integer userID, Double ojldjl, int i) {
+        this.userID = userID;
+        this.ojldjl = ojldjl;
+        this.index = i;
     }
 
     public Integer getUserID() {
@@ -26,5 +33,13 @@ public class Oujilide {
 
     public void setOjldjl(Double ojldjl) {
         this.ojldjl = ojldjl;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }
