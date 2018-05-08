@@ -26,16 +26,21 @@ public class RecommendController {
         if(user!=null&&user.size()==0){
             return entityevaluationRepository.findAll();
         }
+//        目标用户对表情包的评价
         EntityevaluationHelper userHelper = EntityevaluationHelper.build(userID,user);
+
         List<Entityevaluation> other = new ArrayList<>();
         List<Entityevaluation> otherMeme;
+//        目标用户已评价的表情包id
         Set<Integer> set = new HashSet<>();
         for (int i = 0;i<user.size();i++){
             Integer memeID = user.get(i).getMemeID();
             set.add(memeID);
+//          目标用户评价过的表情包还有哪些评价item包括用户本身
             otherMeme = entityevaluationRepository.findAllByMemeID(memeID);
             other.addAll(otherMeme);
         }
+//          目标用户的相似用户（评价过相同的表情包）
         Set<Integer> userSet = new HashSet<>();
         for(int i=0;i<other.size();i++){
             Integer userId = other.get(i).getUserID();
@@ -45,7 +50,9 @@ public class RecommendController {
                 userSet.add(userId);
             }
         }
+//        去除目标用户自身
         userSet.remove(userID);
+
         List<EntityevaluationHelper> otherHelper = new ArrayList<>();
         EntityevaluationHelper helper;
         for (Integer id:userSet){
@@ -59,7 +66,7 @@ public class RecommendController {
             Oujilide oujilide = new Oujilide(one.getUserID(),userHelper.similarity(one),i);
             oujilides.add(oujilide);
         }
-        //假装排序
+        //假装排序 取前三相似用户
         int len = oujilides.size();
         int[] maxList = new int[3];
         if(len>=3) {
@@ -111,6 +118,7 @@ public class RecommendController {
                 }
             }
         }
+//        去除目标用户已评价的表情包
         memeSet.removeAll(set);
         ArrayList<Entitymeme> tuijianList=new ArrayList<Entitymeme>();
         for (Integer memeID:memeSet){
