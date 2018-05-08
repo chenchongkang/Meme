@@ -24,7 +24,7 @@ public class RecommendController {
     public Object recommendlist(@PathVariable("userID") Integer userID){
         List<Entityevaluation> user = entityevaluationRepository.findAllByUserID(userID);
         if(user!=null&&user.size()==0){
-            return entityevaluationRepository.findAll();
+            return entitymemeRepository.findAll();
         }
 //        目标用户对表情包的评价
         EntityevaluationHelper userHelper = EntityevaluationHelper.build(userID,user);

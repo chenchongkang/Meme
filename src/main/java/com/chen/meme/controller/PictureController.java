@@ -73,7 +73,7 @@ public class PictureController {
 
     }
 
-
+//获取表情包图图片
     @RequestMapping(value="/getpictureid/{pictureID}",method=RequestMethod.GET)
     @ResponseBody
     public void getLocalImage(@PathVariable("pictureID") Integer pictureid,HttpServletRequest request, HttpServletResponse response)
