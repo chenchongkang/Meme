@@ -20,8 +20,13 @@ public class EvaluationController {
      */
     @PostMapping(value = "/addevaluation")
     public Object Register(@RequestBody(required =false) Entityevaluation entityevaluation) {
-        entityevaluationRepository.save(entityevaluation);
-        return "success";
+        if (entityevaluationRepository.findByUserIDAndMemeID(entityevaluation.getUserID(),entityevaluation.getMemeID())!=null){
+            return "你已经评价过该表情包";
+        }else {
+            entityevaluationRepository.save(entityevaluation);
+            return "success";
+        }
+
     }
 
     /**
