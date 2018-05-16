@@ -4,6 +4,7 @@ import com.chen.meme.model.Entityevaluation;
 import com.chen.meme.repository.EntityevaluationRepository;
 import com.chen.meme.server.EvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,9 +43,10 @@ public class EvaluationController {
 public List<Entityevaluation> memedata(@PathVariable("memeID") Integer memeID) {
     return entityevaluationRepository.findAllByMemeID(memeID);
 }
-//根据用户ID查询表情包列表
+//根据用户ID查询表情包评价列表
 @RequestMapping(value = "/evaluauserlist/{userID}", method = RequestMethod.POST)
 public List<Entityevaluation> userdata(@PathVariable("userID") Integer userID) {
+    Sort sort = new Sort(Sort.Direction.DESC, "imgID");
     return entityevaluationRepository.findAllByUserID(userID);
 }
 //根据用户ID与表情包ID查询用户对该表情包的评分

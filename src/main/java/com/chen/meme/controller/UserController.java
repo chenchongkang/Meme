@@ -126,6 +126,41 @@ public class UserController {
         }
     }
 
+    /**
+     * 手机端更新用户并修改头像
+     * @param userID
+     * @param file
+     * @param entityuser
+     * @return
+     */
+    @PostMapping(value = "/entityuserupdates/{userID}")
+    public Object userUpdates(@PathVariable("userID")Integer userID,
+                             @RequestParam(value = "file",required =false) MultipartFile file,
+                             @RequestBody(required =false) Entityuser entityuser){
+        List<Entityuser> list = entityuserRepository.findByUserName(entityuser.getUserName());
+        boolean flag = false;
+        if(list.size()>0){
+            flag = true;
+            for( Entityuser user : list){
+                if(user.getUserID() == userID){
+                    flag = false;
+                }
+            }
+        }
+        if(flag){
+            return ERR;
+        }else {
+            entityuser.setUserID(userID);
+            if (file==null){
+                entityuserRepository.save(entityuser);
+                return "保存成功";
+            }
+            String src="avatar";
+            memeService.avatarFile(entityuser,file,src);
+            return "保存成功";
+        }
+    }
+
 //    @PostMapping(value = "/entityuserupdate/{userID}")
 //    public Object userUpdate(@PathVariable("userID")Integer userID,
 //                             @RequestBody(required =false) Entityuser entityuser){

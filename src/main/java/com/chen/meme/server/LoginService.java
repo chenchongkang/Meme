@@ -21,4 +21,17 @@ public class LoginService {
         }
     }
 
+    public String FindUserPassword(Entityuser entityuser){
+        List<Entityuser> entityusers=entityuserRepository.findByUserNameAndAddressAndPhonenumber(entityuser.getUserName(),
+                entityuser.getAddress(),entityuser.getPhonenumber());
+        if (entityusers.size()<=0)
+        {
+            return "您输入的信息有误,无法找回密码";
+        }
+        else {
+            return entityusers.get(0).getPassword();
+        }
+
+    }
+
 }

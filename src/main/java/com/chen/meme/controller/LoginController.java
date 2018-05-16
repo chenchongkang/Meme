@@ -12,7 +12,11 @@ public class LoginController {
 
     @PostMapping(value = "/login")
     public String Login(@RequestBody(required =false) Entityuser entityuser) {
-
         return loginService.Login(entityuser);
+    }
+
+    @PostMapping(value = "/finduserpass")
+    public String FindUserPassword(@RequestBody(required = false) Entityuser entityuser){
+        return loginService.FindUserPassword(entityuser);
     }
 }
