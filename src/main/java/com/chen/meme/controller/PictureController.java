@@ -80,6 +80,14 @@ public class PictureController {
             throws ServletException, IOException {
         Entitypicture entitypicture =entitypictureRepository.findOne(pictureid);
         Entitymeme entitymeme=entitymemeRepository.findOne(entitypicture.getMemeID());
+        if(request.getParameter("downloads")!=null){
+            int sum = 0;
+            if(entitymeme.getDownloads()!=null){
+                sum = entitymeme.getDownloads();
+            }
+            entitymeme.setDownloads(++sum);
+            entitymemeRepository.save(entitymeme);
+        }
         String memeSrc =entitymeme.getMemeSrc();
         String path = entitypicture.getPath();
             //获取缓存文件最后的修改时间（只有缓存过的文件在请求时存在该参数）

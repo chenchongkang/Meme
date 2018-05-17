@@ -183,14 +183,13 @@ public class MemeController {
             }
         }
     }
-//    @PostMapping(value = "/entitymemeupdate/{memeID}")
-//    public Entitymeme MemeUpdata(@PathVariable("memeID") Integer memeID, @RequestBody(required = false) Entitymeme entitymeme) {
-//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-//        Timestamp now = new Timestamp(System.currentTimeMillis());
-//        entitymeme.setUpTime(df.format(now));
-//        entitymeme.setMemeID(memeID);
-//        return entitymemeRepository.save(entitymeme);
-//    }
+
+    @PostMapping(value = "/entitymemedownload/{memeID}")
+    public Object MemeUpdata(@PathVariable("memeID") Integer memeID, @RequestBody(required = false) Entitymeme entitymeme) {
+        entitymeme.setMemeID(memeID);
+        entitymemeRepository.save(entitymeme);
+        return "success" ;
+    }
 
     /**
      * 删除表情包
